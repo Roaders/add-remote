@@ -1,0 +1,11 @@
+{
+  "name": "add-remote",
+  "version": "0.0.1",
+  "description": "A small utility for adding a public remote to git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
