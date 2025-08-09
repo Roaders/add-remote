@@ -16,10 +16,11 @@
     "scripts": {
         "clean": "rimraf dist coverage",
         "build": "tsc -p tsconfig.build.json",
+        "build:watch": "tsc -p tsconfig.build.json --watch",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
-        "prebuild-release": "npm run clean",
-        "build-release": "concurrently --kill-others-on-fail npm:lint npm:build npm:verify-markdown",
+        "prebuild:release": "npm run clean",
+        "build:release": "concurrently --kill-others-on-fail npm:lint npm:build npm:verify-markdown",
         "prewrite-markdown": "npm run build",
         "preverify-markdown": "npm run build",
         "write-markdown": "write-markdown -f package.json -p markdownConfig",
@@ -36,6 +37,8 @@
         "@types/node": "^24.2.1",
         "@typescript-eslint/eslint-plugin": "^8.39.0",
         "@typescript-eslint/parser": "^8.39.0",
+        "chalk": "^5.5.0",
+        "concurrently": "^9.2.0",
         "eslint": "^9.33.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.4",
@@ -53,5 +56,9 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Roaders/add-remote.git"
+    },
+    "dependencies": {
+        "message-await": "^1.1.0",
+        "simple-git": "^3.28.0"
     }
 }
