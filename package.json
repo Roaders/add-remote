@@ -4,7 +4,7 @@
     "type": "module",
     "description": "A small utility for adding a public remote to git",
     "bin": {
-        "add-remote": "dist/add-remote.js"
+        "add-remote": "dist/bin/add-remote.js"
     },
     "keywords": [
         "git",
