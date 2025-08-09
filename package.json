@@ -1,7 +1,7 @@
 {
     "name": "add-remote",
     "version": "0.0.1",
-    "type": "mnodule",
+    "type": "module",
     "description": "A small utility for adding a public remote to git",
     "bin": {
         "add-remote": "dist/add-remote.js"
@@ -37,7 +37,17 @@
         "url": "https://github.com/Roaders/add-remote/issues"
     },
     "homepage": "https://github.com/Roaders/add-remote#readme",
-    "devDependencies": {},
+    "devDependencies": {
+        "@types/node": "^24.2.1",
+        "@typescript-eslint/eslint-plugin": "^8.39.0",
+        "@typescript-eslint/parser": "^8.39.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.4",
+        "jiti": "^2.5.1",
+        "prettier": "^3.6.2",
+        "ts-command-line-args": "^2.5.1",
+        "typescript": "^5.9.2"
+    },
     "markdownConfig": {
         "markdownPath": "README.MD",
         "jsFile": "dist/write-markdown.constants.js",
@@ -47,5 +57,8 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Roaders/add-remote.git"
+    },
+    "dependencies": {
+        "eslint": "^9.33.0"
     }
 }
