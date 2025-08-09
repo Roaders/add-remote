@@ -1,11 +1,51 @@
 {
-  "name": "add-remote",
-  "version": "0.0.1",
-  "description": "A small utility for adding a public remote to git",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "add-remote",
+    "version": "0.0.1",
+    "type": "mnodule",
+    "description": "A small utility for adding a public remote to git",
+    "bin": {
+        "add-remote": "dist/add-remote.js"
+    },
+    "keywords": [
+        "git",
+        "remote",
+        "upstream"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "clean": "rimraf dist coverage",
+        "build": "tsc -p tsconfig.build.json",
+        "build:example": "tsc -p src/example",
+        "watch-build:example": "tsc -p src/example --watch",
+        "watch-build": "tsc --watch -p tsconfig.build.json",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint . --ext .ts --fix",
+        "test": "jest --ci --coverage && tsc --noemit",
+        "watch-test": "jest --watch",
+        "prebuild-release": "npm run clean",
+        "build-release": "concurrently --kill-others-on-fail npm:test npm:lint npm:build npm:build:example npm:verify-markdown",
+        "prewrite-markdown": "npm run build",
+        "preverify-markdown": "npm run build",
+        "write-markdown": "node dist/write-markdown -f package.json -p markdownConfig",
+        "verify-markdown": "node dist/write-markdown -f package.json -p markdownConfig -v",
+        "prepublishOnly": "npm run build --if-present && npm run test --if-present && npm run lint --if-present"
+    },
+    "author": "Giles Roadnight",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Roaders/add-remote/issues"
+    },
+    "homepage": "https://github.com/Roaders/add-remote#readme",
+    "devDependencies": {},
+    "markdownConfig": {
+        "markdownPath": "README.MD",
+        "jsFile": "dist/write-markdown.constants.js",
+        "verifyMessage": "'{fileName}' is out of date. Please regenerate by running 'npm run write-markdown'",
+        "removeDoubleBlankLines": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Roaders/add-remote.git"
+    }
 }
