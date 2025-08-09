@@ -16,19 +16,14 @@
     "scripts": {
         "clean": "rimraf dist coverage",
         "build": "tsc -p tsconfig.build.json",
-        "build:example": "tsc -p src/example",
-        "watch-build:example": "tsc -p src/example --watch",
-        "watch-build": "tsc --watch -p tsconfig.build.json",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
-        "test": "jest --ci --coverage && tsc --noemit",
-        "watch-test": "jest --watch",
         "prebuild-release": "npm run clean",
-        "build-release": "concurrently --kill-others-on-fail npm:test npm:lint npm:build npm:build:example npm:verify-markdown",
+        "build-release": "concurrently --kill-others-on-fail npm:lint npm:build npm:verify-markdown",
         "prewrite-markdown": "npm run build",
         "preverify-markdown": "npm run build",
-        "write-markdown": "node dist/write-markdown -f package.json -p markdownConfig",
-        "verify-markdown": "node dist/write-markdown -f package.json -p markdownConfig -v",
+        "write-markdown": "write-markdown -f package.json -p markdownConfig",
+        "verify-markdown": "write-markdown -f package.json -p markdownConfig -v",
         "prepublishOnly": "npm run build --if-present && npm run test --if-present && npm run lint --if-present"
     },
     "author": "Giles Roadnight",
@@ -41,6 +36,7 @@
         "@types/node": "^24.2.1",
         "@typescript-eslint/eslint-plugin": "^8.39.0",
         "@typescript-eslint/parser": "^8.39.0",
+        "eslint": "^9.33.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.4",
         "jiti": "^2.5.1",
@@ -49,7 +45,7 @@
         "typescript": "^5.9.2"
     },
     "markdownConfig": {
-        "markdownPath": "README.MD",
+        "markdownPath": "readme.md",
         "jsFile": "dist/write-markdown.constants.js",
         "verifyMessage": "'{fileName}' is out of date. Please regenerate by running 'npm run write-markdown'",
         "removeDoubleBlankLines": true
@@ -57,8 +53,5 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Roaders/add-remote.git"
-    },
-    "dependencies": {
-        "eslint": "^9.33.0"
     }
 }
