@@ -25,7 +25,7 @@
         "preverify-markdown": "npm run build",
         "write-markdown": "write-markdown -f package.json -p markdownConfig",
         "verify-markdown": "write-markdown -f package.json -p markdownConfig -v",
-        "prepublishOnly": "npm run build --if-present && npm run test --if-present && npm run lint --if-present"
+        "prepublishOnly": "npm run build:release"
     },
     "author": "Giles Roadnight",
     "license": "ISC",
